@@ -1,0 +1,14 @@
+# Ignore build output
+dist/
+# Package directories
+node_modules/
+.pnpm-store/
+# Editor directories and files
+.vscode/
+.zed/
+.idea/
+# Environment files
+.env
+.env.local
+.env.test
+.env.production
