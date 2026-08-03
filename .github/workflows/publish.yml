@@ -1,0 +1,61 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "npm dist-tag to publish under"
+        type: string
+        default: latest
+      dry-run:
+        description: "Build and pack only — do not publish"
+        type: boolean
+        default: false
+
+# Required for npm Trusted Publishing (OIDC). No NPM_TOKEN needed.
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting
+        run: pnpm fmt:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Verify scaffolder output
+        run: node bin/create.mjs "${RUNNER_TEMP}/scaffold-check"
+
+      - name: Pack (dry run)
+        if: inputs.dry-run
+        run: pnpm pack --pack-destination "${RUNNER_TEMP}"
+
+      - name: Publish to npm
+        if: ${{ !inputs.dry-run }}
+        run: pnpm publish --access public --tag "${{ inputs.tag }}" --no-git-checks
