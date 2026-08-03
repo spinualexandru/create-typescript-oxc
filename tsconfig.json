@@ -12,11 +12,7 @@
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "paths": {
-      "@/*": ["./src/*"],
-      "@main": ["./src/index.ts"],
-    },
+    "experimentalDecorators": true
   },
-  "include": ["src"],
+  "include": ["src"]
 }

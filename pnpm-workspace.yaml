@@ -1,2 +1,8 @@
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - oxfmt
+  - "@oxfmt/*"
+  - oxlint
+  - "@oxlint/*"
+  - tsx

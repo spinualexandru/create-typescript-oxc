@@ -1,10 +1,69 @@
 {
-  "name": "adapterize",
+  "name": "create-typescript-oxc",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A minimal TypeScript template with pnpm + oxfmt + oxlint",
+  "keywords": [
+    "boilerplate",
+    "create",
+    "esm",
+    "oxc",
+    "oxfmt",
+    "oxlint",
+    "pnpm",
+    "scaffold",
+    "starter",
+    "template",
+    "typescript",
+    "vitest"
+  ],
+  "homepage": "https://github.com/spinualexandru/create-typescript-oxc#readme",
+  "bugs": {
+    "url": "https://github.com/spinualexandru/create-typescript-oxc/issues"
+  },
+  "license": "MIT",
+  "author": "Alex Spinu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spinualexandru/create-typescript-oxc.git"
+  },
+  "bin": {
+    "create-typescript-oxc": "./bin/create.mjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "src",
+    "tests",
+    "_gitignore",
+    "oxfmt.config.ts",
+    "oxlint.config.ts",
+    "pnpm-workspace.yaml",
+    "tsconfig.json",
+    "tsconfig.test.json"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "imports": {
+    "#*": {
+      "types": "./src/*",
+      "development": "./src/*",
+      "default": "./dist/*"
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch --conditions=development src/index.ts",
     "start": "node dist/index.js",
     "test": "vitest run --typecheck --typecheck.tsconfig tsconfig.test.json",
     "typecheck": "tsc --noEmit",
@@ -12,26 +71,26 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "prepack": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "tsx": "^4.23.5",
+    "typescript": "7.0.2",
+    "vitest": "^4.1.10"
+  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^11.9.0",
+      "version": "11.20.0",
       "onFail": "download"
     }
   },
-  "type": "module",
-  "devDependencies": {
-    "@types/node": "^26.1.0",
-    "oxfmt": "^0.57.0",
-    "oxlint": "^1.72.0",
-    "oxlint-tsgolint": "^0.24.0",
-    "tsx": "^4.23.0",
-    "typescript": "7.0.1-rc",
-    "vitest": "^4.1.9"
+  "engines": {
+    "node": ">=22"
   }
 }

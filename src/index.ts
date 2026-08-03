@@ -1,1 +1,3 @@
-console.log("Hello world");
+import { greet } from "#lib/greet.js";
+
+console.log(greet("world"));
