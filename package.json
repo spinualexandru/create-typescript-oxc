@@ -1,6 +1,6 @@
 {
   "name": "create-typescript-oxc",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A minimal TypeScript template with pnpm + oxfmt + oxlint",
   "keywords": [
     "boilerplate",
@@ -76,11 +76,11 @@
   },
   "devDependencies": {
     "@types/node": "latest",
-    "oxfmt": "^0.68.0",
-    "oxlint": "^1.83.0",
-    "tsx": "^4.23.13",
+    "oxfmt": "^0.72.0",
+    "oxlint": "^1.87.0",
+    "tsx": "^4.23.15",
     "typescript": "7.0.2",
-    "vitest": "^5.0.1"
+    "vitest": "^5.0.4"
   },
   "devEngines": {
     "packageManager": {
