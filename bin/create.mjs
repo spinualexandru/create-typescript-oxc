@@ -17,7 +17,6 @@ const packageRoot = fileURLToPath(new URL("..", import.meta.url));
 const TEMPLATE_FILES = [
   "oxfmt.config.ts",
   "oxlint.config.ts",
-  "pnpm-workspace.yaml",
   "tsconfig.json",
   "tsconfig.test.json",
 ];
@@ -109,10 +108,10 @@ Scaffolded with [create-typescript-oxc](https://github.com/spinualexandru/create
 ## Commands
 
 \`\`\`
-pnpm dev          # tsx watch src/index.ts
-pnpm build        # tsc -> dist/
+pnpm dev          # node --watch src/index.ts
+pnpm build        # tsrs -> dist/
 pnpm start        # node dist/index.js
-pnpm typecheck    # tsc --noEmit
+pnpm typecheck    # tsrs --noEmit
 pnpm test         # vitest (with test typechecking)
 pnpm lint         # oxlint (type-aware)
 pnpm lint:fix

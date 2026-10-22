@@ -1,7 +1,7 @@
 {
   "name": "create-typescript-oxc",
-  "version": "1.0.5",
-  "description": "A minimal TypeScript template with pnpm + oxfmt + oxlint",
+  "version": "1.1.0",
+  "description": "A minimal TypeScript template with pnpm + oxfmt + oxlint + tsrs",
   "keywords": [
     "boilerplate",
     "create",
@@ -13,6 +13,7 @@
     "scaffold",
     "starter",
     "template",
+    "tsrs",
     "typescript",
     "vitest"
   ],
@@ -37,7 +38,6 @@
     "_gitignore",
     "oxfmt.config.ts",
     "oxlint.config.ts",
-    "pnpm-workspace.yaml",
     "tsconfig.json",
     "tsconfig.test.json"
   ],
@@ -46,10 +46,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "imports": {
-    "#*": {
-      "types": "./src/*",
-      "development": "./src/*",
-      "default": "./dist/*"
+    "#*.js": {
+      "types": "./src/*.ts",
+      "development": "./src/*.ts",
+      "default": "./dist/*.js"
     }
   },
   "exports": {
@@ -63,23 +63,22 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "tsx watch --conditions=development src/index.ts",
+    "dev": "node --watch --conditions=development src/index.ts",
     "start": "node dist/index.js",
-    "test": "vitest run --typecheck --typecheck.tsconfig tsconfig.test.json",
-    "typecheck": "tsc --noEmit",
-    "build": "tsc",
+    "test": "vitest run --typecheck --typecheck.checker tsrs --typecheck.tsconfig tsconfig.test.json",
+    "typecheck": "tsrs --noEmit",
+    "build": "tsrs",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "prepack": "tsc"
+    "prepack": "tsrs"
   },
   "devDependencies": {
     "@types/node": "latest",
-    "oxfmt": "^0.72.0",
+    "oxfmt": "^0.74.0",
     "oxlint": "^1.87.0",
-    "tsx": "^4.23.15",
-    "typescript": "7.0.2",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "vitest": "^5.0.4"
   },
   "devEngines": {
@@ -90,6 +89,6 @@
     }
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.18"
   }
 }

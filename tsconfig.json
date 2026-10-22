@@ -12,7 +12,7 @@
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true
+    "erasableSyntaxOnly": true
   },
   "include": ["src"]
 }
