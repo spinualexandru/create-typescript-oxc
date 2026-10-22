@@ -1,7 +1,8 @@
 # create-typescript-oxc
 
 A minimal TypeScript starter built on the [oxc](https://oxc.rs) toolchain —
-`oxlint` and `oxfmt`, TypeScript 7, pnpm, vitest, ESM only.
+`oxlint`, `oxfmt` and [`tsrs`](https://github.com/oxc-project/tsrs) (the Rust port of
+the TypeScript 7 compiler), pnpm, vitest, ESM only.
 
 ```sh
 pnpm create typescript-oxc my-app
@@ -13,13 +14,16 @@ pnpm dev
 `npm create typescript-oxc@latest my-app` and `yarn create typescript-oxc my-app`
 work too. Omit the directory and you'll be prompted for one.
 
+`tsrs` currently ships binaries for macOS (Apple silicon) and Linux (x64/arm64)
+only. Windows support will follow once `tsrs` publishes a Windows build.
+
 ## Commands
 
 ```
-pnpm dev          # tsx watch src/index.ts
-pnpm build        # tsc -> dist/
+pnpm dev          # node --watch src/index.ts
+pnpm build        # tsrs -> dist/
 pnpm start        # node dist/index.js
-pnpm typecheck    # tsc --noEmit
+pnpm typecheck    # tsrs --noEmit
 pnpm test         # vitest, including typechecking of tests
 pnpm lint         # oxlint (type-aware)
 pnpm lint:fix     # oxlint --fix
