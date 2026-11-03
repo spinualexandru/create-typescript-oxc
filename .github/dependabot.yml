@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      # Mondays and Thursdays at 09:00 local time.
+      cronjob: "0 9 * * 1,4"
+      timezone: "Europe/Bucharest"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      # Mondays and Thursdays at 09:00 local time.
+      cronjob: "0 9 * * 1,4"
+      timezone: "Europe/Bucharest"
