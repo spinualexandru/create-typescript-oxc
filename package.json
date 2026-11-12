@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@types/node": "latest",
-    "oxfmt": "^0.75.0",
+    "oxfmt": "^0.77.0",
     "oxlint": "^1.90.0",
     "tsrs": "0.20.1-ts7.1.0-beta",
     "vitest": "^5.1.0"
